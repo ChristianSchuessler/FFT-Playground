@@ -348,3 +348,47 @@ void four1(double* data, unsigned long nn)
 		mmax = istep;
 	}
 }
+
+
+// implementation from
+// Iterative FFT function to compute the DFT
+// of given coefficient vector
+template<typename DataType>
+void fft(vector<DataType>& a, vector<DataType>& A, int log2n)
+{
+	typedef complex<DataType> cd;
+	int n = 4; // ?
+
+	// bit reversal of the given array
+	for (unsigned int i = 0; i < n; ++i) {
+		int rev = bitReverse(i, log2n);
+		A[i] = a[rev];
+	}
+
+	// j is iota
+	const complex<double> J(0, 1);
+	for (int s = 1; s <= log2n; ++s) {
+		int m = 1 << s; // 2 power s
+		int m2 = m >> 1; // m2 = m/2 -1
+		cd w(1, 0);
+
+		// principle root of nth complex 
+		// root of unity.
+		cd wm = exp(J * (M_PI / m2));
+		for (int j = 0; j < m2; ++j) {
+			for (int k = j; k < n; k += m) {
+
+				// t = twiddle factor
+				cd t = w * A[k + m2];
+				cd u = A[k];
+
+				// similar calculating y[k]
+				A[k] = u + t;
+
+				// similar calculating y[k+n/2]
+				A[k + m2] = u - t;
+			}
+			w *= wm;
+		}
+	}
+}
