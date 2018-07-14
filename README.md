@@ -1,4 +1,4 @@
-"# FFT-Playground" 
+# FFT-Playground
 
 ## Allgemein
 
@@ -10,6 +10,7 @@ https://www.youtube.com/watch?v=HFlIIIi5cEM&t=571s
 https://stackoverflow.com/questions/28009590/understanding-the-radix-2-fft-recursive-algorithm
 
 ##Implementierungsdetails
+
 http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.153.6089&rep=rep1&type=pdf
 
 https://cs.stackexchange.com/questions/51742/how-does-the-stockham-fft-work
